@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Your Recycling Statistics</h2>
+    <p>Total recycled: {{ total_recycled }} kg</p>
+    
+    {% if chart %}
+        {{ chart|safe }}
+    {% else %}
+        <p>No data available for visualization.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Log Your Recycling Activity</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <h3>Recent Activities</h3>
+    <ul>
+    {% for activity in activities %}
+        <li>{{ activity.date }}: Total {{ activity.total_recycled }} kg</li>
+    {% empty %}
+        <li>No activities logged yet.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

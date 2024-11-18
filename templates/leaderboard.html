@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Leaderboard</h2>
+    <ol>
+    {% for user in top_users %}
+        <li>{{ user.username }}: {{ user.total_recycled|default:0 }} kg</li>
+    {% empty %}
+        <li>No users have logged any recycling activities yet.</li>
+    {% endfor %}
+    </ol>
+{% endblock %}
