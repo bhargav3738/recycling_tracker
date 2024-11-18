@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="max-width: 400px; margin: 0 auto; padding: 20px;">
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div style="margin-bottom: 10px;">
+                {{ field.label_tag }}
+                {{ field }}
+                {% for error in field.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit" style="background-color: #e8491d; color: white; padding: 10px 15px; border: none; cursor: pointer;">Login</button>
+    </form>
+    <p style="margin-top: 20px;">Don't have an account? <a href="{% url 'register' %}" style="color: #e8491d;">Register here</a></p>
+</div>
+{% endblock %}
